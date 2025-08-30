@@ -1,0 +1,6 @@
+image = '/content/drive/MyDrive/colab/download.jpg'
+model = CNNtoRNN(embed_size,hidden_size,vocab_size,num_layers)
+optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
+step = load_checkpoint(torch.load('/content/my_checkpoint.pth.tar'),model,optimizer)
+model.to(device)
+print(model.caption_image(transform(Image.open(image).convert("RGB")).to(device),vocabulary=dataset.vocab))
