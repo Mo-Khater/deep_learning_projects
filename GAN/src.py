@@ -86,12 +86,12 @@ for epoch in range(num_epochs):
         gen_loss.backward()
         optmG.step()
 
-    if idx % 200 == 0:
-        with torch.no_grad():
-            test_noise = torch.randn(16, z_dim).to(device)
-            fake_samples = gen(test_noise).view(-1, 1, 28, 28)
-            vutils.save_image(fake_samples, f"epoch{epoch}_batch{idx}.png", 
-                            normalize=True, nrow=4)
-        
+        if idx % 200 == 0:
+            with torch.no_grad():
+                test_noise = torch.randn(16, z_dim).to(device)
+                fake_samples = gen(test_noise).view(-1, 1, 28, 28)
+                vutils.save_image(fake_samples, f"epoch{epoch}_batch{idx}.png", 
+                                normalize=True, nrow=4)
+            
 
 
